@@ -33,9 +33,10 @@ public class Card : MonoBehaviour
     {
         if (_state == StateCard.ACTIVE)
         {
-            
+
         }
     }
+
     private void OnMouseEnter()
     {
         if (_state == StateCard.PASIVE)
@@ -52,4 +53,4 @@ enum StateCard
     PASIVE,
     IN_DECK,
     NOT_PLAYABLE
-}
+};

@@ -10,8 +10,6 @@ public class PlayerHandController : MonoBehaviour
     private const float DELAY_BETWEEN_ACTION = 0.1f;
     private List<Card> _hand = new List<Card>();
 
-
-
     private void Awake()
     {
         CardGameController.StartTurnEvent.AddListener(TakeHand);
