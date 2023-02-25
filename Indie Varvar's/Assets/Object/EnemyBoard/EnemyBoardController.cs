@@ -8,19 +8,22 @@ public class EnemyBoardController : MonoBehaviour
     private List<EnemyCash> _enemies = new List<EnemyCash>();
     private const int MAX_NUMBER_OF_ENEMY = 5;
 
-    private void Start()
+    private Transform _transform;
+
+    private void Awake()
     {
-        
+        _transform = GetComponent<Transform>();
     }
-    /*public void AddEnemy(GameObject enemyPref)
+    public void AddEnemy(GameObject enemyPref)
     {
-        EnemyCash enemyCash = new EnemyCash();
-        eenemy = Instantiate(enemyPref) as GameObject;
-        newEnemyTr = enemy.GetComponent<Transform>();
-        newEnemyEn = newEnemy.GetComponent<Enemy>();
-        _enemies.Add(enemy);
-        
-    }*/
+        GameObject newEnemy = Instantiate(enemyPref) as GameObject;
+        EnemyCash enemyCash = new EnemyCash(newEnemy);
+
+        enemyCash.Transform.parent = _transform;
+        Vector3 Shift = new Vector3(enemyCash.Renderer.bounds.size.x, 0, 0);
+
+
+    }
     /*private IEnumerator AddEnemyEveryFivSec()
     {
         int k = 0;
@@ -34,16 +37,17 @@ public class EnemyBoardController : MonoBehaviour
 
     struct EnemyCash
     {
-        GameObject enemy;
-        Transform tr;
-        Enemy en;
+        public GameObject EnemyObject;
+        public Transform Transform;
+        public Enemy Enemy;
+        public Renderer Renderer;
 
-        EnemyCash(GameObject enemy)
+        public EnemyCash(GameObject enemy)
         {
-            this.enemy = enemy;
-            tr = enemy.GetComponent<Transform>();
-            en = enemy.GetComponent<Enemy>();
+            this.EnemyObject = enemy;
+            Transform = enemy.GetComponent<Transform>();
+            Enemy = enemy.GetComponent<Enemy>();
+            Renderer = enemy.GetComponent<Renderer>();
         }
-
     }
 }
