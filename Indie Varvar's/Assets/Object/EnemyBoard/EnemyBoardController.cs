@@ -25,7 +25,6 @@ public class EnemyBoardController : MonoBehaviour
 
         enemyCash.Transform.parent = _transform;
         Vector3 shift = new Vector3(enemyCash.Renderer.bounds.size.x * _enemies.Count, 0, 0) * INDENT;
-        Debug.Log(shift);
         enemyCash.Transform.position = _transform.position + shift;
  
         _enemies.Add(enemyCash);
@@ -54,20 +53,20 @@ public class EnemyBoardController : MonoBehaviour
             enemyCash.Enemy.MoveToPosition(_transform.position + shift);
         }
     }
+}
 
-    struct EnemyCash
+struct EnemyCash
+{
+    public GameObject EnemyObject;
+    public Transform Transform;
+    public Enemy Enemy;
+    public Renderer Renderer;
+
+    public EnemyCash(GameObject enemy)
     {
-        public GameObject EnemyObject;
-        public Transform Transform;
-        public Enemy Enemy;
-        public Renderer Renderer;
-
-        public EnemyCash(GameObject enemy)
-        {
-            this.EnemyObject = enemy;
-            Transform = enemy.GetComponent<Transform>();
-            Enemy = enemy.GetComponent<Enemy>();
-            Renderer = enemy.GetComponent<Renderer>();
-        }
+        EnemyObject = enemy;
+        Transform = enemy.GetComponent<Transform>();
+        Enemy = enemy.GetComponent<Enemy>();
+        Renderer = enemy.GetComponent<Renderer>();
     }
 }

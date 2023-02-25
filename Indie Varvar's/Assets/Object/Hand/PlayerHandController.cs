@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class PlayerHandController : MonoBehaviour
 {
-    [SerializeField] private DeckController _deck;
     private const int MAX_NUMBER_OF_CARDS = 8;
     private const int STARTING_NUMBER_OF_CARDS = 5;
     private const float DELAY_BETWEEN_ACTION = 0.1f;
-    private List<Card> _hand = new List<Card>();
+
+    private List<CardCash> _hand = new List<CardCash>();
+    private DeckController _deck;
+    private Transform _transform;
 
     private void Awake()
     {
+        _deck = CardGameController.Instance.Deck;
+        _transform = GetComponent<Transform>();
+
+        Debug.Log(1);
         CardGameController.StartTurnEvent.AddListener(TakeHand);
         CardGameController.FinishTurnEvent.AddListener(DiscardHand);
 
@@ -28,6 +34,18 @@ public class PlayerHandController : MonoBehaviour
 
     public void DiscardCard(Card card)
     {
+        foreach(CardCash cardCash in _hand)
+        {
+            if (cardCash.Card.Equals(card))
+            {
+                _hand.Remove(cardCash);
+                _deck.AddDiscardedCard(cardCash);
+            }
+        }
+    }
+
+    public void DiscardCard(CardCash card)
+    {
         _hand.Remove(card);
         _deck.AddDiscardedCard(card);
     }
@@ -37,20 +55,21 @@ public class PlayerHandController : MonoBehaviour
         StartCoroutine(DiscardCardsWithDelay());
     }
 
-    private void TakeCard()
-    {
-        if (_hand.Count < MAX_NUMBER_OF_CARDS)
-        {
-            _hand.Add(_deck.TakeCard());
-        }
-    }
-
     private IEnumerator TakeCardsWithDelay(int n)
     {
         for (int i = 0; i < n; ++i)
         {
             TakeCard();
             yield return new WaitForSeconds(DELAY_BETWEEN_ACTION);
+        }
+    }
+    private void TakeCard()
+    {
+        if (_hand.Count < MAX_NUMBER_OF_CARDS)
+        {
+            CardCash cardCash = _deck.TakeCard();
+            cardCash.Transform.parent = _transform;
+            _hand.Add(cardCash);
         }
     }
 
