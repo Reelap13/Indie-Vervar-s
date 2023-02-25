@@ -8,6 +8,8 @@ public class DeckController : MonoBehaviour
     private List<Card> _playableDeck = new List<Card>();
     private List<Card> _discardDeck = new List<Card>();
 
+    private Transform _transform;
+
     private void Awake()
     {
         LoadDeck();
@@ -17,7 +19,7 @@ public class DeckController : MonoBehaviour
     {
         if (_playableDeck.Count == 0)
         {
-            ShuffleDeck();
+            ResetDeck();
         }
 
         Card topCard = _playableDeck[0];
@@ -25,9 +27,10 @@ public class DeckController : MonoBehaviour
         return topCard;
     }
 
-    public void DiscardCard(Card card)
+    public void AddDiscardedCard(Card card)
     {
         _discardDeck.Add(card);
+        //карту нужно сделать не активной
     }
 
     private void ResetDeck()
