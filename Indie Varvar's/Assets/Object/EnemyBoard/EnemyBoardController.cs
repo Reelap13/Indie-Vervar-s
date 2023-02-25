@@ -53,6 +53,16 @@ public class EnemyBoardController : MonoBehaviour
             enemyCash.Enemy.MoveToPosition(_transform.position + shift);
         }
     }
+
+    public void DealDamageToFirstEnemy(int damage)
+    {
+        if (_enemies.Count == 0)
+        {
+            return;
+        }
+        _enemies[0].Enemy.takeDamage(damage);
+
+    }
 }
 
 struct EnemyCash

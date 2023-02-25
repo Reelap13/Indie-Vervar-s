@@ -4,14 +4,22 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    public virtual void Die()
+    int hp;
+    protected virtual void OnDestroy()
     {
         CardGameController.Instance.EnemyBoard.RemoveEnemy(this);
-        Destroy(gameObject);
     }
 
 
     bool isMoveAnim;
+    public virtual void takeDamage(int damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+        {
+            Destroy(this);
+        }
+    }
     public void MoveToPosition(Vector3 position)
     {
         if (isMoveAnim)
