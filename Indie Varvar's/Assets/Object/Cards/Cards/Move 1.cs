@@ -6,6 +6,7 @@ public class Move1 : Card, IPlayableCard
 {
     public void OnPlay()
     {
-        Debug.Log("Обращаюсь к герою");
+        CardGameController.Instance.Player.Move(1);
+
     }
 }
