@@ -17,7 +17,7 @@ public abstract class Enemy : MonoBehaviour
         hp -= damage;
         if (hp <= 0)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
     public void MoveToPosition(Vector3 position)
