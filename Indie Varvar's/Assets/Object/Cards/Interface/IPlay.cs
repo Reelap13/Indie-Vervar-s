@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-interface IPlayer
+interface IPlayableCard
 {
     void OnPlay();
 }

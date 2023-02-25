@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hand : MonoBehaviour
+public class PlayerHandController : MonoBehaviour
 {
     [SerializeField] private DeckController _deck;
-    private const int MAX_NUMBER_OF_CARDS = 10;
+    private const int MAX_NUMBER_OF_CARDS = 8;
     private const int STARTING_NUMBER_OF_CARDS = 5;
     private const float DELAY_BETWEEN_ACTION = 0.1f;
     private List<Card> _hand = new List<Card>();
