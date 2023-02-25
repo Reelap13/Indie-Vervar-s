@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class CardGameController : MonoBehaviour
+public class CardGameController : Singleton<CardGameController>
 {
     public static UnityEvent StartTurnEvent = new UnityEvent();
 
     public static UnityEvent FinishTurnEvent = new UnityEvent();
+
+    [SerializeField] private Player _player;
 
     private TurnPhase _phase;
     private void Start()
@@ -60,6 +62,14 @@ public class CardGameController : MonoBehaviour
             default:
                 StartTurn();
                 break;
+        }
+    }
+
+    public Player Player
+    {
+        get
+        {
+            return _player;
         }
     }
 }
