@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 {
     private int _healthPoint;
     private int _mana;
+    private int _shield;
 
     public UnityEvent<int> ChangingHPEvent = new UnityEvent<int>();
     public UnityEvent<int> ChangingManaEvent = new UnityEvent<int>();
@@ -22,6 +23,14 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int value)
     {
+
+
+        if (_shield > 0)
+        {
+            value -= _shield;
+            _shield = Mathf.Max(0, -value);
+        }
+
         _healthPoint -= value;
         if (_healthPoint <= 0)
         {
@@ -65,6 +74,19 @@ public class Player : MonoBehaviour
         ChangingManaEvent.Invoke(_mana);
     }
 
+    public void AddShield(int shieldPoint)
+    {
+        _shield += shieldPoint;
+    }
 
+    public void ResetShield()
+    {
+        _shield = 0;
+    }
+
+    public void Move(int x)
+    {
+        Debug.Log("Move: " + x + " он кста не реализован");
+    }
 
 }
