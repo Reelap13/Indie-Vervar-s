@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    int hp;
+    [SerializeField] int _hp;
     protected virtual void OnDestroy()
     {
         CardGameController.Instance.EnemyBoard.RemoveEnemy(this);
@@ -14,12 +14,13 @@ public abstract class Enemy : MonoBehaviour
     bool isMoveAnim;
     public virtual void takeDamage(int damage)
     {
-        hp -= damage;
-        if (hp <= 0)
+        _hp -= damage;
+        if (_hp <= 0)
         {
             Destroy(gameObject);
         }
     }
+
     public void MoveToPosition(Vector3 position)
     {
         if (isMoveAnim)

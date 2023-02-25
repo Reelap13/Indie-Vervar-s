@@ -10,6 +10,8 @@ public class CardGameController : Singleton<CardGameController>
 
     public static UnityEvent FinishTurnEvent = new UnityEvent();
 
+    public static UnityEvent EnemyTurnEvent = new UnityEvent();
+
     [SerializeField] private Player _player;
     [SerializeField] private EnemyBoardController _enemyBoard;
     [SerializeField] private DeckController _deck;
