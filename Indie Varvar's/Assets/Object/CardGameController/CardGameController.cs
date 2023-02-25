@@ -11,6 +11,7 @@ public class CardGameController : Singleton<CardGameController>
     public static UnityEvent FinishTurnEvent = new UnityEvent();
 
     [SerializeField] private Player _player;
+    [SerializeField] private EnemyBoardController _enemyBoard;
 
     private TurnPhase _phase;
     private void Start()
@@ -70,6 +71,14 @@ public class CardGameController : Singleton<CardGameController>
         get
         {
             return _player;
+        }
+    }
+
+    public EnemyBoardController EnemyBoard
+    {
+        get
+        {
+            return _enemyBoard;
         }
     }
 }
