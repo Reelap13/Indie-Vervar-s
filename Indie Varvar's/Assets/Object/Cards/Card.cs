@@ -2,55 +2,74 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card : MonoBehaviour
+public abstract class Card : MonoBehaviour
 {
     [SerializeField] protected int _mana;
 
     private StateCard _state;
+    private Transform _transform;
+    private bool _isActive = false;
+    
 
-
-    private void ChangeState(StateCard state)
+    private void Awake()
     {
-        _state = state;
-        switch (_state)
-        {
-            case StateCard.ACTIVE:
-
-                break;
-            case StateCard.PASIVE:
-
-                break;
-            case StateCard.IN_DECK:
-
-                break;
-            case StateCard.NOT_PLAYABLE:
-
-                break;
-        }
+        _transform = GetComponent<Transform>();
+        _state = StateCard.IN_DECK;
     }
 
     private void OnMouseDown()
     {
-        if (_state == StateCard.ACTIVE)
+        if (_state == StateCard.IN_GAME)
         {
-
+            if (this is IPlayableCard)
+            {
+                ((IPlayableCard)this).OnPlay();
+                CardGameController.Instance.Hand.DiscardCard(this);
+            }
         }
     }
 
     private void OnMouseEnter()
     {
-        if (_state == StateCard.PASIVE)
+        if (_state == StateCard.IN_GAME)
         {
-            ChangeState(StateCard.ACTIVE);
+            CardGameController.Instance.Hand.ShowActiveCard(this);
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        if (_state == StateCard.IN_GAME)
+        {
+            CardGameController.Instance.Hand.HideActiveCard(this);
+        }
+    }
+
+    public void MoveToPosition(Vector3 position, Quaternion rotation, StateCard state = StateCard.IN_GAME)
+    {
+        _transform.position = position;
+        _transform.rotation = rotation;
+        _state = state;
+    }
+
+    public bool IsActive
+    {
+        set
+        {
+            _isActive = value;
+        }
+        get
+        {
+            return _isActive;
         }
     }
 
 }
 
-enum StateCard
+public enum StateCard
 {
-    ACTIVE,
-    PASIVE,
-    IN_DECK,
-    NOT_PLAYABLE
+    IN_GAME,
+    IN_DECK
 };
+
+

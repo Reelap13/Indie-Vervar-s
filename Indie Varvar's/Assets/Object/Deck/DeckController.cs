@@ -30,10 +30,12 @@ public class DeckController : MonoBehaviour
         return topCard;
     }
 
-    public void AddDiscardedCard(CardCash card)
+    public void AddDiscardedCard(CardCash cardCash)
     {
-        _discardDeck.Add(card);
-        //карту нужно сделать не активной
+        _discardDeck.Add(cardCash);
+
+        cardCash.Transform.parent = _transform;
+        cardCash.Card.MoveToPosition(_transform.position, _transform.rotation, StateCard.IN_DECK);
     }
 
     private void ResetDeck()
@@ -72,7 +74,7 @@ public class DeckController : MonoBehaviour
         CardCash cardCash = new CardCash(newCard);
 
         cardCash.Transform.parent = _transform;
-        cardCash.Transform.position = _transform.position;
+        cardCash.Card.MoveToPosition(_transform.position, _transform.rotation, StateCard.IN_DECK);
 
         return cardCash;
     }

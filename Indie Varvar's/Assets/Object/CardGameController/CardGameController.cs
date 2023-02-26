@@ -12,9 +12,12 @@ public class CardGameController : Singleton<CardGameController>
 
     public static UnityEvent EnemyTurnEvent = new UnityEvent();
 
+    public static UnityEvent AfterEnemyTurnEvent = new UnityEvent();
+
     [SerializeField] private Player _player;
     [SerializeField] private EnemyBoardController _enemyBoard;
     [SerializeField] private DeckController _deck;
+    [SerializeField] private PlayerHandController _hand;
 
     private TurnPhase _phase;
     private void Start()
@@ -36,6 +39,8 @@ public class CardGameController : Singleton<CardGameController>
     {
         _phase = TurnPhase.PLAYER_TURN;
 
+
+
         //StartCoroutine(GoToNextTurnPhase());
     }
 
@@ -44,6 +49,24 @@ public class CardGameController : Singleton<CardGameController>
         _phase = TurnPhase.FINISHING;
 
         FinishTurnEvent.Invoke();
+
+        StartCoroutine(GoToNextTurnPhase());
+    }
+
+    private void EnemyTurn()
+    {
+        _phase = TurnPhase.ENEMY_TURN;
+
+        EnemyTurnEvent.Invoke();
+
+        StartCoroutine(GoToNextTurnPhase());
+    }
+
+    private void AfterEnemyTurn()
+    {
+        _phase = TurnPhase.ENEMY_TURN;
+
+        AfterEnemyTurnEvent.Invoke();
 
         StartCoroutine(GoToNextTurnPhase());
     }
@@ -60,9 +83,14 @@ public class CardGameController : Singleton<CardGameController>
                 FinishTurn();
                 break;
             case TurnPhase.FINISHING:
+                EnemyTurn();
+                break;
+            case TurnPhase.ENEMY_TURN:
+                AfterEnemyTurn();
+                break;
+            case TurnPhase.After_Enemy_Turn:
                 StartTurn();
                 break;
-
             default:
                 StartTurn();
                 break;
@@ -92,12 +120,22 @@ public class CardGameController : Singleton<CardGameController>
             return _deck;
         }
     }
+
+    public PlayerHandController Hand
+    {
+        get
+        {
+            return _hand;
+        }
+    }
 }
 
 enum TurnPhase
 {
     STARTING,
     PLAYER_TURN,
-    FINISHING
+    FINISHING,
+    ENEMY_TURN,
+    After_Enemy_Turn
 }
 
