@@ -51,11 +51,33 @@ public abstract class Card : MonoBehaviour
         }
     }
 
+    private bool isMoveAnim = false;
     public void MoveToPosition(Vector3 position, Quaternion rotation, StateCard state = StateCard.IN_GAME)
     {
-        _transform.position = position;
-        _transform.rotation = rotation;
+        if (isMoveAnim)
+            StopCoroutine("MoveToPositionAnim");
         _state = state;
+        StartCoroutine(MoveToPositionAnim(position, rotation));
+    }
+    private IEnumerator MoveToPositionAnim(Vector3 position, Quaternion rotation)
+    {
+        isMoveAnim = true;
+
+        Vector3 startPosition = _transform.position;
+        Quaternion startRotation = _transform.rotation;
+        float t = 0;
+
+        const float animationDuration = 1f;
+
+        while (t < 1)
+        {
+            _transform.position = Vector3.Lerp(startPosition, position, t * t);
+            _transform.rotation = Quaternion.Lerp(startRotation, rotation, t * t);
+            t += Time.deltaTime / animationDuration;
+            yield return null;
+        }
+
+        isMoveAnim = false;
     }
 
     public bool IsActive

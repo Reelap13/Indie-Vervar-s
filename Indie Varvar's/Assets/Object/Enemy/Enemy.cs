@@ -26,7 +26,7 @@ public abstract class Enemy : MonoBehaviour
         if (isMoveAnim)
             StopCoroutine("MoveToPositionAnim");
 
-       StartCoroutine(MoveToPositionAnim(position));
+        StartCoroutine(MoveToPositionAnim(position));
     }
 
     private IEnumerator MoveToPositionAnim(Vector3 position)

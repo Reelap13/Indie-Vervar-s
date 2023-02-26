@@ -95,7 +95,8 @@ public class Player : MonoBehaviour
 
     public void Move(int x)
     {
-        Debug.Log("Move: " + x + " он кста не реализован");
+        for (int i = 0; i < x; ++i)
+            CardGameController.Instance.GameBoard.MoveForward();
     }
 
 }
