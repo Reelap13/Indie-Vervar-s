@@ -7,6 +7,9 @@ using System.IO;
 
 public class Player : MonoBehaviour
 {
+    private const int STARTING_MANA_VALUE = 10;
+    private const int STARTING_HP_VALUE = 3;
+
     private int _healthPoint;
     private int _mana;
     private int _shield;
@@ -16,41 +19,52 @@ public class Player : MonoBehaviour
     public UnityEvent<int> ChangingShieldEvent = new UnityEvent<int>();
     public UnityEvent Dying = new UnityEvent();
 
-    private void Start()
+    private void Awake()
     {
-        SetHP(10);
-        Mana = 6;
+        CardGameController.SuperStartTurnEvent.AddListener(ResetShield);
+        CardGameController.SuperStartTurnEvent.AddListener(ResetMana);
+        HP = STARTING_HP_VALUE;
     }
 
     public void TakeDamage(int value)
     {
 
 
-        if (_shield > 0)
+        if (Shield > 0)
         {
-            value -= _shield;
-            _shield = Mathf.Max(0, -value);
+            value -= Shield;
+            Shield = Mathf.Max(0, -value);
         }
 
-        _healthPoint -= value;
-        if (_healthPoint <= 0)
+        if (HP - value <= 0)
         {
+            HP = 0;
             Dying.Invoke();
             return;
         }
 
+        HP -= value;
         ChangingHPEvent.Invoke(_healthPoint);
     }
 
-    public void SetHP(int healthPoint)
-    {
-        if (healthPoint <= 0)
-        {
-            //Exception
-        }
+    
 
-        _healthPoint = healthPoint;
-        ChangingHPEvent.Invoke(_healthPoint);
+    public int HP
+    {
+        set 
+        { 
+            if (value <= 0)
+            {
+                Dying.Invoke();
+            }
+
+            _healthPoint = value;
+            ChangingHPEvent.Invoke(_healthPoint);
+        }
+        get
+        {
+            return _healthPoint;
+        }
     }
 
     public void SpendMana(int value)
@@ -82,15 +96,33 @@ public class Player : MonoBehaviour
         }
     }
 
+    public int Shield
+    {
+        set
+        {
+            _shield += value;
+            ChangingShieldEvent.Invoke(_shield);
+        }
+        get
+        {
+            return _shield;
+        }
+    }
+
 
     public void AddShield(int shieldPoint)
     {
-        _shield += shieldPoint;
+        Shield += shieldPoint;
     }
 
     public void ResetShield()
     {
-        _shield = 0;
+        Shield = 0;
+    }
+
+    public void ResetMana()
+    {
+        Mana = STARTING_MANA_VALUE;
     }
 
     public void Move(int x)

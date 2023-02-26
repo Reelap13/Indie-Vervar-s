@@ -6,9 +6,11 @@ using UnityEngine.Events;
 
 public class CardGameController : Singleton<CardGameController>
 {
+    public static UnityEvent SuperStartTurnEvent = new UnityEvent();
     public static UnityEvent StartTurnEvent = new UnityEvent();
 
     public static UnityEvent FinishTurnEvent = new UnityEvent();
+    public static UnityEvent SuperFinishTurnEvent = new UnityEvent();
 
     public static UnityEvent EnemyTurnEvent = new UnityEvent();
 
@@ -31,6 +33,7 @@ public class CardGameController : Singleton<CardGameController>
     private void StartTurn()
     {
         _phase = TurnPhase.STARTING;
+        SuperStartTurnEvent.Invoke();
         StartTurnEvent.Invoke();
 
         StartCoroutine(GoToNextTurnPhase());
@@ -50,6 +53,7 @@ public class CardGameController : Singleton<CardGameController>
         _phase = TurnPhase.FINISHING;
 
         FinishTurnEvent.Invoke();
+        SuperFinishTurnEvent.Invoke();
 
         StartCoroutine(GoToNextTurnPhase());
     }

@@ -56,10 +56,11 @@ public abstract class Card : MonoBehaviour
     {
         if (isMoveAnim)
             StopCoroutine("MoveToPositionAnim");
-        _state = state;
-        StartCoroutine(MoveToPositionAnim(position, rotation));
+        if (state == StateCard.IN_DECK)
+            _state = state;
+        StartCoroutine(MoveToPositionAnim(position, rotation, state));
     }
-    private IEnumerator MoveToPositionAnim(Vector3 position, Quaternion rotation)
+    private IEnumerator MoveToPositionAnim(Vector3 position, Quaternion rotation, StateCard state)
     {
         isMoveAnim = true;
 
@@ -77,6 +78,7 @@ public abstract class Card : MonoBehaviour
             yield return null;
         }
 
+        _state = state;
         isMoveAnim = false;
     }
 

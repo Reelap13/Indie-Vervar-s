@@ -7,16 +7,19 @@ public class GameBoardController : MonoBehaviour
 {
     public static UnityEvent<int> RemovingFirsFields = new UnityEvent<int>();
 
+    [SerializeField] private GameObject _fieldPref;
     [SerializeField] private GameObject _figurePref;
     
+    
     private List<FieldCash> _fieldBoard = new List<FieldCash>();
+    private Vector3 INDENT = new Vector3(0, 0, 10) * 1.5f;
 
-    private Transform _tr;
+    private Transform _transform;
     private Figure _figure;
 
     private void Awake()
     {
-        _tr = GetComponent<Transform>();
+        _transform = GetComponent<Transform>();
 
         GenerateBoard();
         CreatePlayerFigure();
@@ -24,7 +27,20 @@ public class GameBoardController : MonoBehaviour
 
     private void GenerateBoard()
     {
-            
+        for (int i = 0; i < 10; ++i)
+        {
+            FieldCash fieldCash = CreateFieldCash(_fieldPref);
+            fieldCash.Transform.position = _transform.position + INDENT * i;
+            _fieldBoard.Add(fieldCash);
+        }
+    }
+
+    private FieldCash CreateFieldCash(GameObject fieldPref)
+    {
+        GameObject newField = Instantiate(fieldPref) as GameObject;
+        FieldCash fieldCash = new FieldCash(newField);
+
+        return fieldCash;
     }
 
     private void CreatePlayerFigure()
@@ -104,4 +120,11 @@ public struct FieldCash
     public GameObject FieldObject;
     public Transform Transform;
     public Field Field;
+
+    public FieldCash(GameObject field)
+    {
+        FieldObject = field;
+        Transform = field.GetComponent<Transform>();
+        Field = field.GetComponent<Field>();
+    }
 }

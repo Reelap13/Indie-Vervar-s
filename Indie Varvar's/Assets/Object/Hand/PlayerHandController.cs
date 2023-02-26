@@ -20,8 +20,8 @@ public class PlayerHandController : MonoBehaviour
         _deck = CardGameController.Instance.Deck;
         _transform = GetComponent<Transform>();
 
-        CardGameController.StartTurnEvent.AddListener(TakeHand);
-        CardGameController.FinishTurnEvent.AddListener(DiscardHand);
+        CardGameController.SuperStartTurnEvent.AddListener(TakeHand);
+        CardGameController.SuperFinishTurnEvent.AddListener(DiscardHand);
 
     }
 
@@ -48,10 +48,11 @@ public class PlayerHandController : MonoBehaviour
         }
     }
 
-    public void DiscardCard(CardCash card)
+    public void DiscardCard(CardCash cardCash)
     {
-        _hand.Remove(card);
-        _deck.AddDiscardedCard(card);
+        HideActiveCard(cardCash.Card);
+        _hand.Remove(cardCash);
+        _deck.AddDiscardedCard(cardCash);
     }
 
     private void DiscardHand()

@@ -51,7 +51,7 @@ public class Figure : MonoBehaviour
     {
         get
         {
-            return IndexOfField;
+            return _indexOfField;
         }
     }
 
