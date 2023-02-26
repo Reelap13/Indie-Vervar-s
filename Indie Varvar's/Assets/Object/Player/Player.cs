@@ -80,8 +80,8 @@ public class Player : MonoBehaviour
         {
             return _mana;
         }
-        
     }
+
 
     public void AddShield(int shieldPoint)
     {
