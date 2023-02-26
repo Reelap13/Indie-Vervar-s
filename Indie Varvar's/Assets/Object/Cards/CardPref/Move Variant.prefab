@@ -7,21 +7,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5142463332318048569, guid: 0dc5b43717441584cbe1affa80a10d6a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 94fb3e102e923d74b9b2521155aed7f2, type: 2}
     - target: {fileID: 6275379031396715094, guid: 0dc5b43717441584cbe1affa80a10d6a, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6275379031396715094, guid: 0dc5b43717441584cbe1affa80a10d6a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.0815184
+      value: 12.530327
       objectReference: {fileID: 0}
     - target: {fileID: 6275379031396715094, guid: 0dc5b43717441584cbe1affa80a10d6a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5050788
+      value: 21.455795
       objectReference: {fileID: 0}
     - target: {fileID: 6275379031396715094, guid: 0dc5b43717441584cbe1affa80a10d6a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -76.73273
+      value: -164.75612
       objectReference: {fileID: 0}
     - target: {fileID: 6275379031396715094, guid: 0dc5b43717441584cbe1affa80a10d6a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -53,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6655563061952663788, guid: 0dc5b43717441584cbe1affa80a10d6a, type: 3}
       propertyPath: m_Name
-      value: Move
+      value: Move Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dc5b43717441584cbe1affa80a10d6a, type: 3}
@@ -73,7 +77,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6655563061952663788, guid: 0dc5b43717441584cbe1affa80a10d6a, type: 3}
   m_PrefabInstance: {fileID: 1965329643511331789}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1130333899
+--- !u!114 &590018178
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,8 +86,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5123706260187769633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6314684f2447d424eb033c4ae2d191fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f5378a2ae60205478af05f14eb5e50e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _mana: 1
   _manaTextMesh: {fileID: 4013640369185721265}
+  _damage: 1

@@ -63,9 +63,13 @@ public class EnemyBoardController : MonoBehaviour
         _enemies[0].Enemy.takeDamage(damage);
 
     }
+    public List<EnemyCash> EnemyList
+    {
+        get { return _enemies; } private set { _enemies = value; }
+    }
 }
 
-struct EnemyCash
+public struct EnemyCash
 {
     public GameObject EnemyObject;
     public Transform Transform;
