@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public abstract class Card : MonoBehaviour
 {
     [SerializeField] protected int _mana;
+    [SerializeField] TextMeshPro _manaTextMesh;
+
 
     private StateCard _state;
     private Transform _transform;
@@ -15,6 +18,7 @@ public abstract class Card : MonoBehaviour
     {
         _transform = GetComponent<Transform>();
         _state = StateCard.IN_DECK;
+        _manaTextMesh.text = "" + _mana;
     }
 
     private void OnMouseDown()
