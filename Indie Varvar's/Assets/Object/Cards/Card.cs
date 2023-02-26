@@ -12,13 +12,15 @@ public abstract class Card : MonoBehaviour
     private StateCard _state;
     private Transform _transform;
     private bool _isActive = false;
-    
+    private SideCard _side;
 
     private void Awake()
     {
         _transform = GetComponent<Transform>();
         _state = StateCard.IN_DECK;
-        _manaTextMesh.text = "" + _mana;
+        _side = SideCard.BACK;
+        _transform.rotation = Quaternion.Euler(180, 180, 0);
+        //_manaTextMesh.text = "" + _mana;
     }
 
     private void OnMouseDown()
@@ -59,7 +61,8 @@ public abstract class Card : MonoBehaviour
     public void MoveToPosition(Vector3 position, Quaternion rotation, StateCard state = StateCard.IN_GAME)
     {
         if (isMoveAnim)
-            StopCoroutine("MoveToPositionAnim");
+            StopAllCoroutines();
+            //StopCoroutine("MoveToPositionAnim");
         if (state == StateCard.IN_DECK)
             _state = state;
         StartCoroutine(MoveToPositionAnim(position, rotation, state));
@@ -70,6 +73,7 @@ public abstract class Card : MonoBehaviour
 
         Vector3 startPosition = _transform.position;
         Quaternion startRotation = _transform.rotation;
+        Quaternion finalRotation = GetAngle(rotation);
         float t = 0;
 
         const float animationDuration = 1f;
@@ -77,7 +81,7 @@ public abstract class Card : MonoBehaviour
         while (t < 1)
         {
             _transform.position = Vector3.Lerp(startPosition, position, t * t);
-            _transform.rotation = Quaternion.Lerp(startRotation, rotation, t * t);
+            _transform.rotation = Quaternion.Lerp(startRotation, finalRotation, t * t);
             t += Time.deltaTime / animationDuration;
             yield return null;
         }
@@ -89,9 +93,21 @@ public abstract class Card : MonoBehaviour
     public void MoveToPositionWithoutAnim(Vector3 position, Quaternion rotation, StateCard state = StateCard.IN_GAME)
     {
         _transform.position = position;
-        _transform.rotation = rotation;
+        _transform.rotation = GetAngle(rotation);
         _state = state;
     }
+
+    public void MoveToPositionWithRotationSide(Vector3 position, Quaternion rotation, StateCard state = StateCard.IN_GAME)
+    {
+        if (isMoveAnim)
+            StopAllCoroutines();
+            //StopCoroutine("MoveToPositionAnim");
+        if (state == StateCard.IN_DECK)
+            _state = state;
+        ChagneSideWithoutRotation();
+        StartCoroutine(MoveToPositionAnim(position, rotation, state));
+    }
+
 
     public bool IsActive
     {
@@ -105,6 +121,49 @@ public abstract class Card : MonoBehaviour
         }
     }
 
+    private Quaternion GetAngle(Quaternion rotation)
+    {
+        Vector3 frontSide = new Vector3(180, 0, 0);
+        Vector3 backSide = new Vector3(180, 180, 0);
+
+        if (_side == SideCard.FRONT)
+        {
+            return Quaternion.Euler(rotation.eulerAngles + frontSide);
+        }
+        else
+        {
+            return Quaternion.Euler(rotation.eulerAngles + backSide);
+        }
+    }
+
+    public void ChagneSide()
+    {
+        Vector3 frontSide = new Vector3(0, 0, 0);
+        Vector3 backSide = new Vector3(0, 180, 0);
+
+        if (_side == SideCard.FRONT)
+        {
+            _side = SideCard.BACK;
+            _transform.rotation = Quaternion.Euler(_transform.rotation.eulerAngles + frontSide - backSide);
+        }
+        else
+        {
+            _side = SideCard.FRONT;
+            _transform.rotation = Quaternion.Euler(_transform.rotation.eulerAngles - frontSide + backSide);
+        }
+    }
+
+    private void ChagneSideWithoutRotation()
+    {
+        if (_side == SideCard.FRONT)
+        {
+            _side = SideCard.BACK;
+        }
+        else
+        {
+            _side = SideCard.FRONT;
+        }
+    }
 }
 
 public enum StateCard
@@ -114,3 +173,8 @@ public enum StateCard
 };
 
 
+public enum SideCard
+{
+    BACK,
+    FRONT
+}
