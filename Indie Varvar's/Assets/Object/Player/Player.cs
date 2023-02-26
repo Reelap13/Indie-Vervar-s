@@ -36,6 +36,11 @@ public class Player : MonoBehaviour
             Shield = Mathf.Max(0, -value);
         }
 
+        if (value < 0)
+        {
+            return;
+        }
+
         if (HP - value <= 0)
         {
             HP = 0;
@@ -51,7 +56,7 @@ public class Player : MonoBehaviour
 
     public int HP
     {
-        set 
+        private set 
         { 
             if (value <= 0)
             {
@@ -65,17 +70,6 @@ public class Player : MonoBehaviour
         {
             return _healthPoint;
         }
-    }
-
-    public void SpendMana(int value)
-    {
-        if (_mana - value < 0)
-        {
-            //Exception
-        }
-
-        _mana -= value;
-        ChangingManaEvent.Invoke(_mana);
     }
 
     public int Mana
@@ -100,19 +94,13 @@ public class Player : MonoBehaviour
     {
         set
         {
-            _shield += value;
+            _shield = value;
             ChangingShieldEvent.Invoke(_shield);
         }
         get
         {
             return _shield;
         }
-    }
-
-
-    public void AddShield(int shieldPoint)
-    {
-        Shield += shieldPoint;
     }
 
     public void ResetShield()

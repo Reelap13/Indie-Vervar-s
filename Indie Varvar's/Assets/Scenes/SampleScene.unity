@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56bb405bad96af640b638422ab90e187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardPref: {fileID: 6655563061952663788, guid: c0e4240611f66cd4f876d76681414dcb, type: 3}
+  _cardPref: {fileID: 6655563061952663788, guid: 3f4d4a34c32eff347b43b8f06ce27882, type: 3}
 --- !u!4 &572780134
 Transform:
   m_ObjectHideFlags: 0
@@ -991,6 +991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3167d53ff9c5be408f2be033a2ef295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fieldPref: {fileID: 0}
   _figurePref: {fileID: 0}
 --- !u!4 &1878886981
 Transform:
