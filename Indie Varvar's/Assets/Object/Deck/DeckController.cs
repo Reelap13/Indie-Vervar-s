@@ -28,6 +28,7 @@ public class DeckController : MonoBehaviour
 
         CardCash topCard = _playableDeck[0];
         _playableDeck.RemoveAt(0);
+        //topCard.Card.ChagneSide();
         return topCard;
     }
 
@@ -37,7 +38,7 @@ public class DeckController : MonoBehaviour
 
         cardCash.Transform.parent = _transform;
         //Debug.Log(cardCash.BoxCollider.bounds.size.x);
-        cardCash.Card.MoveToPosition(_transform.position + cardCash.BoxCollider.bounds.size.x * INDENT_OF_DISCARD_DECK, _transform.rotation, StateCard.IN_DECK);
+        cardCash.Card.MoveToPositionWithRotationSide(_transform.position + cardCash.BoxCollider.bounds.size.x * INDENT_OF_DISCARD_DECK, _transform.rotation, StateCard.IN_DECK);
     }
 
     private void ResetDeck()
@@ -77,7 +78,7 @@ public class DeckController : MonoBehaviour
         CardCash cardCash = new CardCash(newCard);
 
         cardCash.Transform.parent = _transform;
-        cardCash.Card.MoveToPosition(_transform.position, _transform.rotation, StateCard.IN_DECK);
+        cardCash.Card.MoveToPositionWithoutAnim(_transform.position, _transform.rotation, StateCard.IN_DECK);
 
         return cardCash;
     }

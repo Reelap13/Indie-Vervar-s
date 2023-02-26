@@ -67,7 +67,7 @@ public class PlayerHandController : MonoBehaviour
             TakeCard();
             yield return new WaitForSeconds(DELAY_BETWEEN_ACTION);
         }
-        PlaceCardInHand();
+        PlaceCardInHandFromDeck();
     }
     private void TakeCard()
     {
@@ -108,7 +108,7 @@ public class PlayerHandController : MonoBehaviour
         for(int i = 0; i < _hand.Count; ++i)
         {
             CardCash cardCash = _hand[i];
-            float angleOfRotate = ((float)(_hand.Count - 1) / 2.0f - (float)i) * ANGLE_ROTATION;
+            float angleOfRotate = ((float)i - (float)(_hand.Count - 1) / 2.0f) * ANGLE_ROTATION;
             Vector3 position = startPos + sizeByX * i * PROXIMITY 
                                         - sizeByY * DROPPING * Mathf.Pow(Mathf.Abs((float)(_hand.Count - 1) / 2.0f - (float)i), 1.5f)
                                         - sizeByZ * i;
@@ -119,6 +119,35 @@ public class PlayerHandController : MonoBehaviour
         }
     }
 
+    private void PlaceCardInHandFromDeck()
+    {
+        if (_hand.Count == 0)
+            return;
+
+        const float PROXIMITY = 0.8f;
+        const float DROPPING = 0.03f;
+        const float ANGLE_ROTATION = 3;
+
+        Vector3 size = _hand[0].Renderer.bounds.size;
+        Vector3 sizeByX = new Vector3(size.x, 0, 0);
+        Vector3 sizeByY = new Vector3(0, size.y, 0);
+        Vector3 sizeByZ = new Vector3(0, 0, 1f);
+
+        Vector3 startPos = _transform.position - _hand.Count * sizeByX / 2.0f * PROXIMITY;
+
+        for (int i = 0; i < _hand.Count; ++i)
+        {
+            CardCash cardCash = _hand[i];
+            float angleOfRotate = ((float)i - (float)(_hand.Count - 1) / 2.0f) * ANGLE_ROTATION;
+            Vector3 position = startPos + sizeByX * i * PROXIMITY
+                                        - sizeByY * DROPPING * Mathf.Pow(Mathf.Abs((float)(_hand.Count - 1) / 2.0f - (float)i), 1.5f)
+                                        - sizeByZ * i;
+
+            Quaternion rotation = Quaternion.Euler(0, 0, angleOfRotate);
+
+            cardCash.Card.MoveToPositionWithRotationSide(position, rotation);
+        }
+    }
 
     public void ShowActiveCard(Card card)
     {
@@ -143,7 +172,7 @@ public class PlayerHandController : MonoBehaviour
 
         card.IsActive = false;
         CardCash newPassiveCard = FindActiveCard(card);
-
+        
         if (newPassiveCard.Card == null)
             return;
 
