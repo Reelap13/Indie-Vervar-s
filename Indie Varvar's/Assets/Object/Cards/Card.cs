@@ -86,6 +86,13 @@ public abstract class Card : MonoBehaviour
         isMoveAnim = false;
     }
 
+    public void MoveToPositionWithoutAnim(Vector3 position, Quaternion rotation, StateCard state = StateCard.IN_GAME)
+    {
+        _transform.position = position;
+        _transform.rotation = rotation;
+        _state = state;
+    }
+
     public bool IsActive
     {
         set
