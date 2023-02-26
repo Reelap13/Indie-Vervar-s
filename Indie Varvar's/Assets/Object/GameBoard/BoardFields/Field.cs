@@ -4,25 +4,31 @@ using UnityEngine;
 
 public abstract class Field : MonoBehaviour
 {
-    private bool isMoveAnim = false;
-    private Vector3 removeIndent = new Vector3(0, 0, 0);
+    private bool _isMoveAnim = false;
+    private bool _isRemoveAnim = false;
+    private Vector3 _removeIndent = new Vector3(-20, 0, 0);
     public void Remove()
     {
+        StopAllCoroutines();
         StartCoroutine(RemoveAnim());
     }
 
     public void MoveToPosition(Vector3 position)
     {
-        if (isMoveAnim)
-            StopCoroutine("MoveToPositionAnim");
+        if (_isRemoveAnim)
+            return;
+        if (_isMoveAnim)
+            StopAllCoroutines();
         StartCoroutine(MoveToPositionAnim(position));
     }
 
     private IEnumerator RemoveAnim()
     {
+        _isRemoveAnim = true;
+
         Transform field = GetComponent<Transform>();
         Vector3 startPosition = field.position;
-        Vector3 finalPosition = field.position + removeIndent;
+        Vector3 finalPosition = field.position + _removeIndent;
         float t = 0;
 
         const float animationDuration = 1f;
@@ -38,7 +44,7 @@ public abstract class Field : MonoBehaviour
 
     private IEnumerator MoveToPositionAnim(Vector3 position)
     {
-        isMoveAnim = true;
+        _isMoveAnim = true;
 
         Transform field = GetComponent<Transform>();
         Vector3 startPosition = field.position;
@@ -48,12 +54,12 @@ public abstract class Field : MonoBehaviour
 
         while (t < 1)
         {
-            field.position = Vector3.Lerp(startPosition, position, t * t);
+            field.position = Vector3.Lerp(startPosition, position, t);
             t += Time.deltaTime / animationDuration;
             yield return null;
         }
 
-        isMoveAnim = false;
+        _isMoveAnim = false;
     }
 
     public virtual void OnStep()
@@ -64,5 +70,4 @@ public abstract class Field : MonoBehaviour
     {
 
     }
-
 }

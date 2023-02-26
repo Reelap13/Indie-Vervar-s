@@ -11,6 +11,7 @@ public class GameBoardController : MonoBehaviour
     [SerializeField] private List<GameObject> _fieldPrefList;
     [SerializeField] private GameObject _figurePref;
     [SerializeField] private int _numberOfElement;
+    [SerializeField] private int _numberOfFieldBehind;
     
     
     private List<FieldCash> _fieldBoard = new List<FieldCash>();
@@ -29,15 +30,17 @@ public class GameBoardController : MonoBehaviour
 
     private void GenerateBoard()
     {
-        { 
+        {
             FieldCash fieldCash = CreateFieldCash(_startFieldPref);
             fieldCash.Transform.position = _transform.position;
+            fieldCash.Transform.parent = _transform;
             _fieldBoard.Add(fieldCash);
         }
         for (int i = 1; i < _numberOfElement; ++i)
         {
             FieldCash fieldCash = CreateFieldCash(_fieldPrefList[Random.Range(0, _fieldPrefList.Count)]);
             fieldCash.Transform.position = _transform.position + INDENT * i;
+            fieldCash.Transform.parent = _transform;
             _fieldBoard.Add(fieldCash);
         }
     }
@@ -71,7 +74,7 @@ public class GameBoardController : MonoBehaviour
         Debug.Log(index);
         _figure.MoveToField(_fieldBoard[index], index);
 
-
+        RebalanceBoard();
     }
     public FieldCash GetField(int index)
     {
@@ -79,6 +82,23 @@ public class GameBoardController : MonoBehaviour
             index = _fieldBoard.Count - 1;
 
         return _fieldBoard[index];
+    }
+
+    private void RebalanceBoard()
+    {
+        if (_figure.IndexOfField < _numberOfFieldBehind)
+            return;
+
+        RemoveFields(_figure.IndexOfField - _numberOfFieldBehind + 1);
+    }
+
+    private void PlaceFieldOnBoard()
+    {
+        for (int i = 0; i < _fieldBoard.Count; ++i)
+        {
+            FieldCash fieldCash = _fieldBoard[i];
+            fieldCash.Field.MoveToPosition(_transform.position + INDENT * i);
+        }
     }
 
     private void RemoveFields(int n = 1)
@@ -96,9 +116,8 @@ public class GameBoardController : MonoBehaviour
 
             yield return new WaitForSeconds(0.3f);
         }
-
         _fieldBoard.RemoveRange(0, n);
-        RemovingFirsFields.Invoke(n);
+        PlaceFieldOnBoard();
     }
 }
 
