@@ -36,7 +36,7 @@ public class DeckController : MonoBehaviour
         _discardDeck.Add(cardCash);
 
         cardCash.Transform.parent = _transform;
-        Debug.Log(cardCash.BoxCollider.bounds.size.x);
+        //Debug.Log(cardCash.BoxCollider.bounds.size.x);
         cardCash.Card.MoveToPosition(_transform.position + cardCash.BoxCollider.bounds.size.x * INDENT_OF_DISCARD_DECK, _transform.rotation, StateCard.IN_DECK);
     }
 

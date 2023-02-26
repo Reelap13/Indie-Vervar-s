@@ -18,6 +18,7 @@ public class CardGameController : Singleton<CardGameController>
     [SerializeField] private EnemyBoardController _enemyBoard;
     [SerializeField] private DeckController _deck;
     [SerializeField] private PlayerHandController _hand;
+    [SerializeField] private Nature _nature;
 
     private TurnPhase _phase;
     private void Start()
@@ -39,13 +40,15 @@ public class CardGameController : Singleton<CardGameController>
     {
         _phase = TurnPhase.PLAYER_TURN;
 
+        Debug.Log(3);
 
-
-        //StartCoroutine(GoToNextTurnPhase());
+        
+        StartCoroutine(GoToNextTurnPhase());
     }
 
     private void FinishTurn()
     {
+        Debug.Log(4);
         _phase = TurnPhase.FINISHING;
 
         FinishTurnEvent.Invoke();
@@ -55,6 +58,7 @@ public class CardGameController : Singleton<CardGameController>
 
     private void EnemyTurn()
     {
+        Debug.Log(5);
         _phase = TurnPhase.ENEMY_TURN;
 
         EnemyTurnEvent.Invoke();
@@ -64,7 +68,8 @@ public class CardGameController : Singleton<CardGameController>
 
     private void AfterEnemyTurn()
     {
-        _phase = TurnPhase.ENEMY_TURN;
+        Debug.Log(6);
+        _phase = TurnPhase.After_Enemy_Turn;
 
         AfterEnemyTurnEvent.Invoke();
 
