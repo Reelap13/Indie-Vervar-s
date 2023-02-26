@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         SetHP(10);
-        SetMana(15); 
+        Mana = 6;
     }
 
     public void TakeDamage(int value)
@@ -62,17 +62,24 @@ public class Player : MonoBehaviour
         _mana -= value;
         ChangingManaEvent.Invoke(_mana);
     }
-
-    public void SetMana(int mana)
+    public int Mana
     {
-        if (mana < 0)
+        set
         {
-            //Exception
-        }
+            if (value < 0)
+            {
+                //Exception
+            }
 
-        _mana = mana;
-        ChangingManaEvent.Invoke(_mana);
+            _mana = value;
+            ChangingManaEvent.Invoke(_mana);
+        }
+        get
+        {
+            return _mana;
+        }
     }
+
 
     public void AddShield(int shieldPoint)
     {
