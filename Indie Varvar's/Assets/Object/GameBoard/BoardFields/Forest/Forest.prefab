@@ -108,6 +108,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 1cb619f404e9c41419ecbd7843be3e9c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5477749408508380018, guid: 1cb619f404e9c41419ecbd7843be3e9c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5477749408508380018, guid: 1cb619f404e9c41419ecbd7843be3e9c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1cb619f404e9c41419ecbd7843be3e9c, type: 3}
       propertyPath: m_Name
       value: Tile_forest

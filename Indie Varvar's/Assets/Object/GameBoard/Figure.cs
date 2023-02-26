@@ -25,30 +25,13 @@ public class Figure : MonoBehaviour
         if (_currentFieldCash.Field != null)
         {
             _currentFieldCash.Field.OnUnstep();
-            DisactivateField(_currentFieldCash);
         }
         fieldCash.Field.OnStep();
-        ActivateField(fieldCash);
 
         _currentFieldCash = fieldCash;
         _transform.parent = fieldCash.Transform;
         _transform.position = fieldCash.Transform.position + indent;
         _indexOfField = numberOfField;
-    }
-
-    private void ActivateField(FieldCash fieldCash)
-    {
-        if (fieldCash.Field is IActiveField)
-        {
-            ((IActiveField)fieldCash.Field).Activate();
-        }
-    }
-    private void DisactivateField(FieldCash fieldCash)
-    {
-        if (fieldCash.Field is IActiveField)
-        {
-            ((IActiveField)fieldCash.Field).Disactivate();
-        }
     }
 
     public int IndexOfField
