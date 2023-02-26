@@ -8,7 +8,7 @@ public class PlayerHandController : MonoBehaviour
     private const int STARTING_NUMBER_OF_CARDS = 8;
     private const float DELAY_BETWEEN_ACTION = 0.1f;
 
-    private const float RAISING_ACTIVE_CARD = 10f;
+    private Vector3 RAISING_ACTIVE_CARD = new Vector3(0, 10f, -4f);
     private const float SCALE_ACTIVE_CARD = 2f;
 
     private List<CardCash> _hand = new List<CardCash>();
@@ -20,7 +20,6 @@ public class PlayerHandController : MonoBehaviour
         _deck = CardGameController.Instance.Deck;
         _transform = GetComponent<Transform>();
 
-        Debug.Log(1);
         CardGameController.StartTurnEvent.AddListener(TakeHand);
         CardGameController.FinishTurnEvent.AddListener(DiscardHand);
 
@@ -129,7 +128,7 @@ public class PlayerHandController : MonoBehaviour
         CardCash newActiveCard = FindActiveCard(card);
 
         newActiveCard.Transform.localScale *= SCALE_ACTIVE_CARD;
-        newActiveCard.Transform.position += new Vector3(0, RAISING_ACTIVE_CARD, 0);
+        newActiveCard.Transform.position += RAISING_ACTIVE_CARD;
     }
 
     public void HideActiveCard(Card card)
@@ -142,7 +141,7 @@ public class PlayerHandController : MonoBehaviour
         CardCash newPassiveCard = FindActiveCard(card);
 
         newPassiveCard.Transform.localScale /= SCALE_ACTIVE_CARD;
-        newPassiveCard.Transform.position -= new Vector3(0, RAISING_ACTIVE_CARD, 0);
+        newPassiveCard.Transform.position -= RAISING_ACTIVE_CARD;
     }
 
     private CardCash FindActiveCard(Card card)
