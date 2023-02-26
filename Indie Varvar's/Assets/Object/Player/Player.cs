@@ -113,8 +113,7 @@ public class Player : MonoBehaviour
 
     public void Move(int x)
     {
-        for (int i = 0; i < x; ++i)
-            CardGameController.Instance.GameBoard.MoveForward();
+        CardGameController.Instance.GameBoard.Move(x);
     }
 
 }

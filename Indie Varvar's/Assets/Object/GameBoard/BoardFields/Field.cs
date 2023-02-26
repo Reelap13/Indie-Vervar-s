@@ -56,4 +56,13 @@ public abstract class Field : MonoBehaviour
         isMoveAnim = false;
     }
 
+    public virtual void OnStep()
+    {
+
+    }
+    public virtual void OnUnstep()
+    {
+
+    }
+
 }

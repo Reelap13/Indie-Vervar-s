@@ -23,7 +23,11 @@ public class Figure : MonoBehaviour
     public void MoveToField(FieldCash fieldCash, int numberOfField)
     {
         if (_currentFieldCash.Field != null)
+        {
+            _currentFieldCash.Field.OnUnstep();
             DisactivateField(_currentFieldCash);
+        }
+        fieldCash.Field.OnStep();
         ActivateField(fieldCash);
 
         _currentFieldCash = fieldCash;

@@ -7,8 +7,10 @@ public class GameBoardController : MonoBehaviour
 {
     public static UnityEvent<int> RemovingFirsFields = new UnityEvent<int>();
 
-    [SerializeField] private GameObject _fieldPref;
+    [SerializeField] private GameObject _startFieldPref;
+    [SerializeField] private List<GameObject> _fieldPrefList;
     [SerializeField] private GameObject _figurePref;
+    [SerializeField] private int _numberOfElement;
     
     
     private List<FieldCash> _fieldBoard = new List<FieldCash>();
@@ -27,9 +29,14 @@ public class GameBoardController : MonoBehaviour
 
     private void GenerateBoard()
     {
-        for (int i = 0; i < 10; ++i)
+        { 
+            FieldCash fieldCash = CreateFieldCash(_startFieldPref);
+            fieldCash.Transform.position = _transform.position;
+            _fieldBoard.Add(fieldCash);
+        }
+        for (int i = 1; i < _numberOfElement; ++i)
         {
-            FieldCash fieldCash = CreateFieldCash(_fieldPref);
+            FieldCash fieldCash = CreateFieldCash(_fieldPrefList[Random.Range(0, _fieldPrefList.Count)]);
             fieldCash.Transform.position = _transform.position + INDENT * i;
             _fieldBoard.Add(fieldCash);
         }
@@ -50,41 +57,22 @@ public class GameBoardController : MonoBehaviour
         _figure.MoveToField(_fieldBoard[0], 0);
     }
 
-    public void MoveForward()
+    public void Move(int x)
     {
-        int index = _figure.IndexOfField + 1;
-        if (index >= _fieldBoard.Count)
-            index = _fieldBoard.Count - 1;
+        if (_figure.IndexOfField + x >= _numberOfElement)
+            x = _numberOfElement - _figure.IndexOfField - 1;
+        if (_figure.IndexOfField + x < 0)
+            x = -_figure.IndexOfField;
+        if (x == 0)
+            return;
         
+
+        int index = x + _figure.IndexOfField;
+        Debug.Log(index);
         _figure.MoveToField(_fieldBoard[index], index);
 
+
     }
-    public void MoveBack()
-    {
-        int index = _figure.IndexOfField - 1;
-        if (index < 0)
-            index = 0;
-
-        _figure.MoveToField(_fieldBoard[index], index);
-    }
-
-    public void JumpForward(int n)
-    {
-        int index = _figure.IndexOfField + n;
-        if (index >= _fieldBoard.Count)
-            index = _fieldBoard.Count - 1;
-
-        _figure.MoveToField(_fieldBoard[index], index);
-    }
-    public void JumpBack(int n)
-    {
-        int index = _figure.IndexOfField - n;
-        if (index < 0)
-            index = 0;
-
-        _figure.MoveToField(_fieldBoard[index], index);
-    }
-
     public FieldCash GetField(int index)
     {
         if (index >= _fieldBoard.Count)

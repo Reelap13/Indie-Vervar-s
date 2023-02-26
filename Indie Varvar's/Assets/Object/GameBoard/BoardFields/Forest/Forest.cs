@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Swamp : Field
+public class Forest : Field
 {
-
 
 }

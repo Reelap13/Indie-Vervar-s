@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56bb405bad96af640b638422ab90e187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardPref: {fileID: 2856308643326979528, guid: 5e919c2beff1ea04893aca49133ef419, type: 3}
+  _cardPref: {fileID: 5123706260187769633, guid: 5e317645148226446ab1f2e255b1d1e2, type: 3}
 --- !u!4 &572780134
 Transform:
   m_ObjectHideFlags: 0
@@ -1000,7 +1000,7 @@ MonoBehaviour:
   _deck: {fileID: 572780133}
   _hand: {fileID: 1973498842}
   _nature: {fileID: 644082321}
-  _gameBoard: {fileID: 0}
+  _gameBoard: {fileID: 1878886980}
 --- !u!4 &1684959098
 Transform:
   m_ObjectHideFlags: 0
@@ -1462,8 +1462,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3167d53ff9c5be408f2be033a2ef295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fieldPref: {fileID: 7894403567716322198, guid: 0b17fd05ed0dbe54cb2745d70a2648da, type: 3}
-  _figurePref: {fileID: 496164111149261108, guid: 0afcd2a828f916b43b46179c2edb1942, type: 3}
+  _startFieldPref: {fileID: 166592588053505768, guid: 60804d47f0de9984a8900aa57def2dbb, type: 3}
+  _fieldPrefList:
+  - {fileID: 166592588053505768, guid: 60804d47f0de9984a8900aa57def2dbb, type: 3}
+  - {fileID: 166592588053505768, guid: 60804d47f0de9984a8900aa57def2dbb, type: 3}
+  - {fileID: 7894403567716322198, guid: 0b17fd05ed0dbe54cb2745d70a2648da, type: 3}
+  _figurePref: {fileID: 8706502099592445401, guid: d6941a6994cdf2746908d025eed9ceb4, type: 3}
+  _numberOfElement: 10
 --- !u!4 &1878886981
 Transform:
   m_ObjectHideFlags: 0
