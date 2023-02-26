@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 27426
+  controlID: 33904
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 27427
+  controlID: 33905
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 27428
+  controlID: 33906
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -224,9 +224,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 88c8feff
-      m_LastClickedID: 0
-      m_ExpandedIDs: 82dcfeff940effff26fbffffa8600000ca600000f260000000610000908d0000968d0000da8d0000e88d0000
+      m_SelectedIDs: d2a00000
+      m_LastClickedID: 41170
+      m_ExpandedIDs: 6ea3feff52b5feff82dcfeff940effff26fbffffa8600000ca600000f260000000610000908d0000968d0000da8d0000e88d0000a89c0000bca00000e6a00000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -524,9 +524,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -78.47038, y: -5.6016703, z: 112.32029}
+    m_Target: {x: -53.645287, y: 31.801476, z: 85.73787}
     speed: 2
-    m_Value: {x: -78.47038, y: -5.6016703, z: 112.32029}
+    m_Value: {x: -53.645287, y: 31.801476, z: 85.73787}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -573,13 +573,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.2544369, y: 0.13351654, z: -0.035511393, w: -0.9571959}
+    m_Target: {x: -0.119293876, y: 0.10908285, z: -0.013207068, w: -0.9867879}
     speed: 2
-    m_Value: {x: -0.25443056, y: 0.13351321, z: -0.03551051, w: -0.95717204}
+    m_Value: {x: -0.119293876, y: 0.10908285, z: -0.013207068, w: -0.986788}
   m_Size:
-    m_Target: 55.658985
+    m_Target: 66.71454
     speed: 2
-    m_Value: 55.658985
+    m_Value: 66.71454
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -672,21 +672,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Object/GameBoard/BoardFields
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Object/GameBoard/BoardFields
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\mixai\UnityPr\Indie Varvar's\Indie-Vervar-s\Indie Varvar's
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 54610000
-    m_LastClickedID: 24916
+    scrollPos: {x: 0, y: 84.600006}
+    m_SelectedIDs: 34900000
+    m_LastClickedID: 36916
     m_ExpandedIDs: 00000000546100005661000058610000b268000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -740,8 +740,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 38cdfeff
-    m_LastClickedInstanceID: -78536
+    m_SelectedInstanceIDs: d2a00000
+    m_LastClickedInstanceID: 41170
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
@@ -818,8 +818,8 @@ MonoBehaviour:
     y: 0
     width: 368
     height: 722.8
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}

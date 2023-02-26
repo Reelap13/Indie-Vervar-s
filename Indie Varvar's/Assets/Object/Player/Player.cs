@@ -28,8 +28,6 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int value)
     {
-
-
         if (Shield > 0)
         {
             value -= Shield;

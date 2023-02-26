@@ -42,12 +42,9 @@ public class CardGameController : Singleton<CardGameController>
     private void PassTurnToPlayer()
     {
         _phase = TurnPhase.PLAYER_TURN;
-
-        
-        StartCoroutine(GoToNextTurnPhase());
     }
 
-    private void FinishTurn()
+    public void FinishTurn()
     {
         Debug.Log(4);
         _phase = TurnPhase.FINISHING;
@@ -151,9 +148,17 @@ public class CardGameController : Singleton<CardGameController>
             return _gameBoard;
         }
     }
+
+    public TurnPhase Phase
+    {
+        get
+        {
+            return _phase;
+        }
+    }
 }
 
-enum TurnPhase
+public enum TurnPhase
 {
     STARTING,
     PLAYER_TURN,

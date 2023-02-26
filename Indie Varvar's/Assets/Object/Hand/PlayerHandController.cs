@@ -128,6 +128,9 @@ public class PlayerHandController : MonoBehaviour
         card.IsActive = true;
         CardCash newActiveCard = FindActiveCard(card);
 
+        if (newActiveCard.Card == null)
+            return;
+
         newActiveCard.Transform.localScale *= SCALE_ACTIVE_CARD;
         newActiveCard.Transform.position += RAISING_ACTIVE_CARD;
     }
@@ -140,6 +143,9 @@ public class PlayerHandController : MonoBehaviour
 
         card.IsActive = false;
         CardCash newPassiveCard = FindActiveCard(card);
+
+        if (newPassiveCard.Card == null)
+            return;
 
         newPassiveCard.Transform.localScale /= SCALE_ACTIVE_CARD;
         newPassiveCard.Transform.position -= RAISING_ACTIVE_CARD;
