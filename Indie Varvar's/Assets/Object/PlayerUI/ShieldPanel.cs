@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ManaPanel : MonoBehaviour
+public class ShieldPanel : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private TextMeshProUGUI _textPanel;
 
     private void Awake()
     {
-        _player.ChangingManaEvent.AddListener(ChangeMana);
+        _player.ChangingShieldEvent.AddListener(ChangeShield);
     }
 
-    private void ChangeMana(int value)
+    private void ChangeShield(int value)
     {
-        _textPanel.text = "Mana: " + value;
+        _textPanel.text = "Shield: " + value;
     }
 }
+

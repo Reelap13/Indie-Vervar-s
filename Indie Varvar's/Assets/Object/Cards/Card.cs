@@ -23,6 +23,12 @@ public abstract class Card : MonoBehaviour
         {
             if (this is IPlayableCard)
             {
+                CardGameController.Instance.Hand.HideActiveCard(this);
+                if (CardGameController.Instance.Player.Mana < _mana)
+                {
+                    return;
+                }
+                CardGameController.Instance.Player.Mana = CardGameController.Instance.Player.Mana - _mana;
                 ((IPlayableCard)this).OnPlay();
                 CardGameController.Instance.Hand.DiscardCard(this);
             }
