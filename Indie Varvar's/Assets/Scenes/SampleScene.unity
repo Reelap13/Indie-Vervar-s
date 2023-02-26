@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56bb405bad96af640b638422ab90e187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardPref: {fileID: 6655563061952663788, guid: 27b4ae443895d6847919297ece7bb07b, type: 3}
+  _cardPref: {fileID: 6655563061952663788, guid: c0e4240611f66cd4f876d76681414dcb, type: 3}
 --- !u!4 &572780134
 Transform:
   m_ObjectHideFlags: 0
@@ -946,6 +946,7 @@ MonoBehaviour:
   _deck: {fileID: 572780133}
   _hand: {fileID: 1973498842}
   _nature: {fileID: 644082321}
+  _gameBoard: {fileID: 0}
 --- !u!4 &1684959098
 Transform:
   m_ObjectHideFlags: 0
@@ -990,6 +991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3167d53ff9c5be408f2be033a2ef295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _figurePref: {fileID: 0}
 --- !u!4 &1878886981
 Transform:
   m_ObjectHideFlags: 0

@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public abstract class Enemy : MonoBehaviour
 {
+    [SerializeField] TextMeshPro _hpTextMesh;
     [SerializeField] int _hp;
     protected virtual void OnDestroy()
     {
@@ -12,9 +14,14 @@ public abstract class Enemy : MonoBehaviour
 
 
     bool isMoveAnim;
+    private void Start()
+    {
+        _hpTextMesh.text = "" + _hp;
+    }
     public virtual void takeDamage(int damage)
     {
         _hp -= damage;
+        _hpTextMesh.text = "" + _hp;
         if (_hp <= 0)
         {
             Destroy(gameObject);
