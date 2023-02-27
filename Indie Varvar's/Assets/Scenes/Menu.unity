@@ -167,7 +167,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 997fd2615e299484087f360f1470a895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cards: []
+  _cards:
+  - {fileID: 5123706260187769633, guid: 7d81368c17e74114fa8506d38bf00175, type: 3}
+  - {fileID: 5123706260187769633, guid: dc24e7ef1e220bd43bb292cc53aaa157, type: 3}
+  - {fileID: 5123706260187769633, guid: 656173e807c14b541b24d41ae506835a, type: 3}
+  - {fileID: 5123706260187769633, guid: 6f7b0d823f3c3b3418083ed6a47a2847, type: 3}
+  - {fileID: 5123706260187769633, guid: 4a56884756dd8cb4ab619220341bc7f1, type: 3}
+  - {fileID: 5123706260187769633, guid: 400aa4de30ef92646b220ffbeb0ba81d, type: 3}
+  - {fileID: 5123706260187769633, guid: e00944c3d9c13e141a7b41a65b516ef1, type: 3}
+  - {fileID: 5123706260187769633, guid: ec5182d5bb29b0345b6252c7c999a5d1, type: 3}
+  - {fileID: 5123706260187769633, guid: 5cbb4679e2d2b0d4087116c821a98eae, type: 3}
+  - {fileID: 5123706260187769633, guid: 527e8a02c780c12418a62a9cae268c06, type: 3}
+  - {fileID: 5123706260187769633, guid: 5e317645148226446ab1f2e255b1d1e2, type: 3}
+  - {fileID: 5123706260187769633, guid: 2f29eda66d6a46d479c1cf462fcbbbb8, type: 3}
+  - {fileID: 5123706260187769633, guid: af1b5ba28a8b69d4bacb35446c1bf40a, type: 3}
+  - {fileID: 5123706260187769633, guid: 22d7fe8f291498d44a9d33dc5a95362d, type: 3}
 --- !u!1 &141611501 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4900472639564852937, guid: eaa649e830e98b942baad2ead4c62efb, type: 3}
@@ -921,7 +935,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7874dadba50983d4596cdbacc755a01f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startCardPrefs: []
+  _startCardPrefs:
+  - {fileID: 5123706260187769633, guid: ec5182d5bb29b0345b6252c7c999a5d1, type: 3}
+  - {fileID: 5123706260187769633, guid: 5cbb4679e2d2b0d4087116c821a98eae, type: 3}
+  - {fileID: 5123706260187769633, guid: 527e8a02c780c12418a62a9cae268c06, type: 3}
+  - {fileID: 5123706260187769633, guid: 5e317645148226446ab1f2e255b1d1e2, type: 3}
+  - {fileID: 5123706260187769633, guid: 2f29eda66d6a46d479c1cf462fcbbbb8, type: 3}
+  - {fileID: 5123706260187769633, guid: af1b5ba28a8b69d4bacb35446c1bf40a, type: 3}
+  - {fileID: 5123706260187769633, guid: 22d7fe8f291498d44a9d33dc5a95362d, type: 3}
+  - {fileID: 5123706260187769633, guid: 7d81368c17e74114fa8506d38bf00175, type: 3}
+  - {fileID: 5123706260187769633, guid: dc24e7ef1e220bd43bb292cc53aaa157, type: 3}
+  - {fileID: 5123706260187769633, guid: 656173e807c14b541b24d41ae506835a, type: 3}
+  - {fileID: 5123706260187769633, guid: 6f7b0d823f3c3b3418083ed6a47a2847, type: 3}
+  - {fileID: 5123706260187769633, guid: 4a56884756dd8cb4ab619220341bc7f1, type: 3}
+  - {fileID: 5123706260187769633, guid: 400aa4de30ef92646b220ffbeb0ba81d, type: 3}
+  - {fileID: 5123706260187769633, guid: e00944c3d9c13e141a7b41a65b516ef1, type: 3}
   saver: {fileID: 69486744}
 --- !u!1001 &182870517005652275
 PrefabInstance:

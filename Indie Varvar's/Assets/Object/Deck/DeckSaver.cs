@@ -27,8 +27,10 @@ public class DeckSaver : MonoBehaviour
     public List<GameObject> LoadDeck()
     {
         if (!File.Exists(PATH))
+        {
+            Debug.Log("File didn't exist");
             return null;
-
+        }
         BinaryFormatter bf = new BinaryFormatter();
         FileStream fs = new FileStream(PATH, FileMode.Open);
 

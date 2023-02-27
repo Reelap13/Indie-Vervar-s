@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Map.unity
     guid: fd5ecbbf8cb15764aa0b298cd58706b0
+  - enabled: 1
+    path: Assets/Scenes/FightSceneEasy.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/FightSceneNormal.unity
+    guid: 597fd9d7dd4023242b510f0187476499
+  - enabled: 1
+    path: Assets/Scenes/FightSceneHard.unity
+    guid: cfb3f47bedc504b40ac5a12fe1e77606
   m_configObjects: {}
