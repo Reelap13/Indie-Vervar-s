@@ -12,7 +12,6 @@ public abstract class Enemy : MonoBehaviour
         CardGameController.Instance.EnemyBoard.RemoveEnemy(this);
     }
 
-
     bool isMoveAnim;
     protected void Awake()
     {

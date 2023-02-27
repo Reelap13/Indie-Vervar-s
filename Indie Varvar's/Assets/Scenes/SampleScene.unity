@@ -543,8 +543,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moves:
-  - {fileID: 498889898416489770, guid: 782f211ac792b0d45bd51698f7405aa0, type: 3}
   - {fileID: 498889898416489770, guid: 4d10f12ff05786f4cba94630ef6aced7, type: 3}
+  - {fileID: 5871620240957819087, guid: 5055e748f72c4a44ba830138c88234d5, type: 3}
   _textMeshPro: {fileID: 833874118}
 --- !u!1 &705507993
 GameObject:
@@ -2346,6 +2346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d41d9a990818449438980d449cc3a95d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _saver: {fileID: 0}
   ChangingHPEvent:
     m_PersistentCalls:
       m_Calls: []
