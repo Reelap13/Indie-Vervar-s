@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fa8395e4a9294b8d8e5498db72c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _description: Summon 2 crow
   _enemys:
   - {fileID: 3363346380574400501, guid: 1a4c79ac2c515ac4aababd31baa11931, type: 3}
   - {fileID: 3363346380574400501, guid: 1a4c79ac2c515ac4aababd31baa11931, type: 3}
