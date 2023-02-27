@@ -5,6 +5,7 @@ using UnityEngine;
 public class DealDamage : Card, IPlayableCard
 {
     [SerializeField] int _startDamage;
+    [SerializeField] int _hitCount;
     int _damage;
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class DealDamage : Card, IPlayableCard
     }
     public void OnPlay()
     {
-        CardGameController.Instance.EnemyBoard.DealDamageToFirstEnemy(_damage + CardGameController.Instance.Player.Strength);
+        for (int i = 0; i < _hitCount; i++)
+            CardGameController.Instance.EnemyBoard.DealDamageToFirstEnemy(_damage + CardGameController.Instance.Player.Strength);
     }
 }

@@ -7,11 +7,12 @@ public class CommonEnemy : Enemy
 {
 
     [SerializeField] TextMeshPro _damageTextMesh;
-    [SerializeField] private int _startDamage;
-    private int _damage;
+    [SerializeField] protected int _startDamage;
+    protected int _damage;
     
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
         CardGameController.EnemyTurnEvent.AddListener(attack);
         _damage = _startDamage - CardGameController.Instance.Player.Arrmor;
         _damageTextMesh.text = "" + _damage;

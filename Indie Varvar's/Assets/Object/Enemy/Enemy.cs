@@ -14,8 +14,9 @@ public abstract class Enemy : MonoBehaviour
 
 
     bool isMoveAnim;
-    private void Awake()
+    protected void Awake()
     {
+        Debug.Log(_hp + " hp");
         _hpTextMesh.text = "" + _hp;
     }
     public virtual void takeDamage(int damage)

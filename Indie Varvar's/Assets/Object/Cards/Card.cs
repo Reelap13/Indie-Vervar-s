@@ -5,6 +5,7 @@ using TMPro;
 
 public abstract class Card : MonoBehaviour
 {
+    [SerializeField] string _description;
     [SerializeField] protected int _mana;
     [SerializeField] TextMeshPro _manaTextMesh;
 

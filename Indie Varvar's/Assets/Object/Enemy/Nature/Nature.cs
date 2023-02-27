@@ -19,7 +19,7 @@ public class Nature : MonoBehaviour
     public void MakeMove()
     {
         _nextMove.DoMove();
-        _textMeshPro.text = _nextMove.Description;
         _nextMove = _moves[Random.Range(0, _moves.Count)];
+        _textMeshPro.text = _nextMove.Description;
     }
 }
