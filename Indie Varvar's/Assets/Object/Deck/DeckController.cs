@@ -6,6 +6,7 @@ using UnityEngine;
 public class DeckController : MonoBehaviour
 {
     [SerializeField] private GameObject _cardPref;
+    [SerializeField] private DeckSaver _saver;
 
     private List<CardCash> _playableDeck = new List<CardCash>();
     private List<CardCash> _discardDeck = new List<CardCash>();
@@ -66,9 +67,11 @@ public class DeckController : MonoBehaviour
 
     private void LoadDeck()
     {
-        for (int i = 0; i < 20; ++i)
+        List<GameObject> cardPrefs = _saver.LoadDeck();
+
+        foreach(GameObject cardPref in cardPrefs)
         {
-            _playableDeck.Add(CreateCard(_cardPref));
+            _playableDeck.Add(CreateCard(cardPref));
         }
     }
 
