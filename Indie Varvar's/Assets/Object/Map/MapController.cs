@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class MapController : MonoBehaviour
+public class MapController : Singleton<MapController>
 {
     [SerializeField] private MapSaver _saver;
     [SerializeField] private List<GameObject> _mapGameObject;
@@ -40,6 +40,7 @@ public class MapController : MonoBehaviour
             int j = Int32.Parse(name[2]) - 1;
 
             PointCash pointCash = new PointCash(_mapGameObject[k], _mapIds.GetMap()[i][j]);
+            _mapGameObject[k].GetComponent<PointPP>().PointCash = pointCash;
             Debug.Log(i + " " + j);
             _mapPoints[i][j] = pointCash;
         }
@@ -84,14 +85,23 @@ public class MapController : MonoBehaviour
         return null;
     }
 
-    // Update is called once per frame
-    void Update()
+    public PointCash GetFirstPointer()
     {
-        
+        return _mapPoints[0][0];
+    }
+
+    public bool IsCanMove(PointCash first, PointCash second)
+    {
+        foreach (Node node in first.Node.GetUpperNodes())
+        {
+            if (node.Equals(second.Node))
+                return true;
+        }
+        return false;
     }
 }
 
-class PointCash
+public class PointCash
 {
     public GameObject PointObject;
     public Transform Transform;
