@@ -8,11 +8,13 @@ public class MenuController : MonoBehaviour
     [SerializeField] private MapSaver _map;
     [SerializeField] private StartDeck _deck;
     [SerializeField] private PlayerSaver _player;
+    [SerializeField] private FigurSaver _figur;
     public void StartNewGame()
     {
         _map.CreateNewMap();
         _deck.SaveStartDeck();
         _player.SetStartHP();
+        _figur.SetStartValue();
         LoadScene(1);
     }
 
