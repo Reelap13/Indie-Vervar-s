@@ -13,14 +13,16 @@ public class Player : MonoBehaviour
     private int _healthPoint;
     private int _mana;
     private int _shield;
-    private int _strength;
-    private int _arrmor;
+    private int _strength = 0;
+    private int _arrmor = 0;
+    private float _speed = 1;
 
     public UnityEvent<int> ChangingHPEvent = new UnityEvent<int>();
     public UnityEvent<int> ChangingManaEvent = new UnityEvent<int>();
     public UnityEvent<int> ChangingShieldEvent = new UnityEvent<int>();
     public UnityEvent<int> ChangingStrenghtEvent = new UnityEvent<int>();
     public UnityEvent<int> ChangingArrmorEvent = new UnityEvent<int>();
+    public UnityEvent<float> ChangingSpeedEvent = new UnityEvent<float>();
     public UnityEvent Dying = new UnityEvent();
 
 
@@ -29,8 +31,6 @@ public class Player : MonoBehaviour
         CardGameController.SuperStartTurnEvent.AddListener(ResetShield);
         CardGameController.SuperStartTurnEvent.AddListener(ResetMana);
         HP = STARTING_HP_VALUE;
-        _strength = 0;
-        _arrmor = 0;
     }
 
     public void TakeDamage(int value)
@@ -92,13 +92,24 @@ public class Player : MonoBehaviour
     {
         set
         {
-            Debug.Log(_arrmor);
             ChangingArrmorEvent.Invoke(value - _arrmor);
             _arrmor = value;
         }
         get
         {
             return _arrmor;
+        }
+    }
+    public float Speed
+    {
+        set
+        {
+            _speed = value;
+            ChangingSpeedEvent.Invoke(_speed);
+        }
+        get
+        {
+            return _speed;
         }
     }
 
@@ -149,7 +160,19 @@ public class Player : MonoBehaviour
 
     public void Move(int x)
     {
-        CardGameController.Instance.GameBoard.Move(x);
+        if (Mathf.Abs(x * _speed + 0.01f) < 1)
+        {
+            if (x < 0)
+            {
+                CardGameController.Instance.GameBoard.Move(-1);
+            }
+            else
+            {
+                CardGameController.Instance.GameBoard.Move(1);
+            }
+            return;
+        }
+        CardGameController.Instance.GameBoard.Move((int)(x * _speed + 0.01f));
     }
 
 }

@@ -8,6 +8,7 @@ public class Mountain : Field
     {
         CardGameController.Instance.Player.Arrmor++;
         CardGameController.Instance.Player.Strength--;
+        Debug.Log("new armor: " + CardGameController.Instance.Player.Arrmor);
     }
     public override void OnUnstep()
     {

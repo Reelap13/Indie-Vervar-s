@@ -8,6 +8,7 @@ public class GameBoardController : MonoBehaviour
     public static UnityEvent<int> RemovingFirsFields = new UnityEvent<int>();
 
     [SerializeField] private GameObject _startFieldPref;
+    [SerializeField] private GameObject _endFieldPref;
     [SerializeField] private List<GameObject> _fieldPrefList;
     [SerializeField] private GameObject _figurePref;
     [SerializeField] private int _numberOfElement;
@@ -36,10 +37,17 @@ public class GameBoardController : MonoBehaviour
             fieldCash.Transform.parent = _transform;
             _fieldBoard.Add(fieldCash);
         }
-        for (int i = 1; i < _numberOfElement; ++i)
+        for (int i = 1; i < _numberOfElement-1; ++i)
         {
             FieldCash fieldCash = CreateFieldCash(_fieldPrefList[Random.Range(0, _fieldPrefList.Count)]);
             fieldCash.Transform.position = _transform.position + INDENT * i;
+            fieldCash.Transform.parent = _transform;
+            _fieldBoard.Add(fieldCash);
+        }
+        {
+            Debug.Log("!!!!");
+            FieldCash fieldCash = CreateFieldCash(_endFieldPref);
+            fieldCash.Transform.position = _transform.position + INDENT * (_numberOfElement - 1);
             fieldCash.Transform.parent = _transform;
             _fieldBoard.Add(fieldCash);
         }
