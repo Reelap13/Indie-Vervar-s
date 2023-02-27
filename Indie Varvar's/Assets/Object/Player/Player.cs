@@ -7,8 +7,9 @@ using System.IO;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private PlayerSaver _saver;
+
     private const int STARTING_MANA_VALUE = 10;
-    private const int STARTING_HP_VALUE = 1000;
 
     private int _healthPoint;
     private int _mana;
@@ -30,7 +31,7 @@ public class Player : MonoBehaviour
     {
         CardGameController.SuperStartTurnEvent.AddListener(ResetShield);
         CardGameController.SuperStartTurnEvent.AddListener(ResetMana);
-        HP = STARTING_HP_VALUE;
+        HP = _saver.LoadHP();
     }
 
     public void TakeDamage(int value)
@@ -57,7 +58,10 @@ public class Player : MonoBehaviour
         ChangingHPEvent.Invoke(_healthPoint);
     }
 
-    
+    public void SaveHP()
+    {
+        _saver.SaveHP(HP);
+    }
 
     public int HP
     {
