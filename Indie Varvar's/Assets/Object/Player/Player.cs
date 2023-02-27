@@ -8,7 +8,7 @@ using System.IO;
 public class Player : MonoBehaviour
 {
     private const int STARTING_MANA_VALUE = 10;
-    private const int STARTING_HP_VALUE = 3;
+    private const int STARTING_HP_VALUE = 1000;
 
     private int _healthPoint;
     private int _mana;
@@ -160,7 +160,8 @@ public class Player : MonoBehaviour
 
     public void Move(int x)
     {
-        if (Mathf.Abs(x * _speed + 0.01f) < 1)
+        //Debug.Log((int)(x * _speed));
+        if (Mathf.Abs(x * _speed) < 1)
         {
             if (x < 0)
             {
@@ -172,7 +173,7 @@ public class Player : MonoBehaviour
             }
             return;
         }
-        CardGameController.Instance.GameBoard.Move((int)(x * _speed + 0.01f));
+        CardGameController.Instance.GameBoard.Move((int)(x * _speed));
     }
 
 }

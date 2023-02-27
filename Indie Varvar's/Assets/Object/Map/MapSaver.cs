@@ -7,7 +7,7 @@ using System.IO;
 
 public class MapSaver : MonoBehaviour
 {
-    private const string PATH = "Map";
+    private const string PATH = "MapSave";
     public void CreateNewMap()
     {
         List<List<Node>> map = new List<List<Node>>();
@@ -34,7 +34,10 @@ public class MapSaver : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
         FileStream fs = new FileStream(PATH, FileMode.Create);
 
-        bf.Serialize(fs, map);
+        Map mapp = new Map();
+        mapp.SetMap(map);
+
+        bf.Serialize(fs, mapp);
 
         fs.Close();
 

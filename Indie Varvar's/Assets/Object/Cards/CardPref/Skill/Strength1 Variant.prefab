@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6655563061952663788, guid: 0dc5b43717441584cbe1affa80a10d6a, type: 3}
       propertyPath: m_Name
-      value: Move Variant
+      value: Strength1 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7737918883416598109, guid: 0dc5b43717441584cbe1affa80a10d6a, type: 3}
       propertyPath: _mana
@@ -69,12 +69,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dc5b43717441584cbe1affa80a10d6a, type: 3}
+--- !u!114 &4013640369185721265 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3239513388680884348, guid: 0dc5b43717441584cbe1affa80a10d6a, type: 3}
+  m_PrefabInstance: {fileID: 1965329643511331789}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5123706260187769633 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6655563061952663788, guid: 0dc5b43717441584cbe1affa80a10d6a, type: 3}
   m_PrefabInstance: {fileID: 1965329643511331789}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2627900734635284304
+--- !u!114 &851137836197351297
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -83,9 +94,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5123706260187769633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6314684f2447d424eb033c4ae2d191fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 165142e81f7e2254e95a855cf8e6973c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mana: 1
-  _manaTextMesh: {fileID: 0}
-  _distance: 1
+  _description: Add 1 strength
+  _mana: 2
+  _manaTextMesh: {fileID: 4013640369185721265}

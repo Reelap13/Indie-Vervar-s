@@ -183,6 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 311170758}
   - component: {fileID: 311170759}
+  - component: {fileID: 311170760}
   m_Layer: 0
   m_Name: MapSaver
   m_TagString: Untagged
@@ -215,6 +216,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83841709df8bf914a98b4caf81527534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &311170760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311170757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7a0a704dcd1da498fad75685a2fd66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1008501539
@@ -1334,6 +1347,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2405674372007436405, guid: 92b1691158e5cff4db30e4690788cf3f, type: 3}
+      propertyPath: _map
+      value: 
+      objectReference: {fileID: 311170760}
+    - target: {fileID: 2405674372007436405, guid: 92b1691158e5cff4db30e4690788cf3f, type: 3}
+      propertyPath: _deck
+      value: 
+      objectReference: {fileID: 2031758227}
+    - target: {fileID: 2405674372007436405, guid: 92b1691158e5cff4db30e4690788cf3f, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1008501541}
     - target: {fileID: 2405674372007436406, guid: 92b1691158e5cff4db30e4690788cf3f, type: 3}
       propertyPath: m_Name
       value: MenuController
