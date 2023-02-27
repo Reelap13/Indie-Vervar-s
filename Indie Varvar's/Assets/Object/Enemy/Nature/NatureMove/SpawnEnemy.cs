@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class SpawnEnemy : NatuerMove
 {
-    [SerializeField] Enemy _enemy;
+    [SerializeField] List<Enemy> _enemys;
     override public void DoMove() 
     {
-        CardGameController.Instance.EnemyBoard.AddEnemy(_enemy.gameObject);
+        for (int i = 0; i < _enemys.Count; i++)
+        {
+            CardGameController.Instance.EnemyBoard.AddEnemy(_enemys[i].gameObject);
+        }
     }
 }

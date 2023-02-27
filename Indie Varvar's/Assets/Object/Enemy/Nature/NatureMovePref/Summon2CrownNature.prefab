@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8304119038450048210}
   - component: {fileID: 498889898416489770}
   m_Layer: 0
-  m_Name: NatureSummonEnemy
+  m_Name: Summon2CrownNature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fa8395e4a9294b8d8e5498db72c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 4534290124728319472, guid: 695a25d007dd24c4799e403fa781621a, type: 3}
+  _enemys:
+  - {fileID: 3363346380574400501, guid: 1a4c79ac2c515ac4aababd31baa11931, type: 3}
+  - {fileID: 3363346380574400501, guid: 1a4c79ac2c515ac4aababd31baa11931, type: 3}

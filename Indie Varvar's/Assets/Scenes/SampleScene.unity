@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1430,7 +1430,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877242731}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -217}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1438,9 +1438,9 @@ RectTransform:
   m_Father: {fileID: 1267543580}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 775, y: -344}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -418, y: 233}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1877242733
@@ -1583,6 +1583,7 @@ MonoBehaviour:
   - {fileID: 166592588053505768, guid: 60804d47f0de9984a8900aa57def2dbb, type: 3}
   - {fileID: 166592588053505768, guid: 60804d47f0de9984a8900aa57def2dbb, type: 3}
   - {fileID: 7894403567716322198, guid: 0b17fd05ed0dbe54cb2745d70a2648da, type: 3}
+  - {fileID: 7916123636330824265, guid: e4523bca1b7c3f948bfbe6ec48b18c06, type: 3}
   _figurePref: {fileID: 8706502099592445401, guid: d6941a6994cdf2746908d025eed9ceb4, type: 3}
   _numberOfElement: 10
   _numberOfFieldBehind: 6
@@ -1749,6 +1750,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   ChangingShieldEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  ChangingStrenghtEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  ChangingArrmorEvent:
     m_PersistentCalls:
       m_Calls: []
   Dying:

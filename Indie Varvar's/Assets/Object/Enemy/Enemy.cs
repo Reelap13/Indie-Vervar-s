@@ -14,7 +14,7 @@ public abstract class Enemy : MonoBehaviour
 
 
     bool isMoveAnim;
-    private void Start()
+    private void Awake()
     {
         _hpTextMesh.text = "" + _hp;
     }

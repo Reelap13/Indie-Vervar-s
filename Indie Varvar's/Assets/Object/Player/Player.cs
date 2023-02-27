@@ -13,19 +13,24 @@ public class Player : MonoBehaviour
     private int _healthPoint;
     private int _mana;
     private int _shield;
-    private int _strenght;
+    private int _strength;
+    private int _arrmor;
 
     public UnityEvent<int> ChangingHPEvent = new UnityEvent<int>();
     public UnityEvent<int> ChangingManaEvent = new UnityEvent<int>();
     public UnityEvent<int> ChangingShieldEvent = new UnityEvent<int>();
+    public UnityEvent<int> ChangingStrenghtEvent = new UnityEvent<int>();
+    public UnityEvent<int> ChangingArrmorEvent = new UnityEvent<int>();
     public UnityEvent Dying = new UnityEvent();
+
 
     private void Awake()
     {
         CardGameController.SuperStartTurnEvent.AddListener(ResetShield);
         CardGameController.SuperStartTurnEvent.AddListener(ResetMana);
         HP = STARTING_HP_VALUE;
-        _strenght = 0;
+        _strength = 0;
+        _arrmor = 0;
     }
 
     public void TakeDamage(int value)
@@ -71,15 +76,29 @@ public class Player : MonoBehaviour
             return _healthPoint;
         }
     }
-    public int Strenght
+    public int Strength
     {
-        private set
+        set
         {
-            _strenght = value;
+            ChangingStrenghtEvent.Invoke(value - _strength);
+            _strength = value;
         }
         get
         {
-            return _strenght;
+            return _strength;
+        }
+    }
+    public int Arrmor
+    {
+        set
+        {
+            Debug.Log(_arrmor);
+            ChangingArrmorEvent.Invoke(value - _arrmor);
+            _arrmor = value;
+        }
+        get
+        {
+            return _arrmor;
         }
     }
 

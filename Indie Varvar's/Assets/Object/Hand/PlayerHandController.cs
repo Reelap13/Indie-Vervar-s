@@ -48,6 +48,10 @@ public class PlayerHandController : MonoBehaviour
         }
     }
 
+    public void DeleteCard(Card card)
+    {
+        Destroy(card.gameObject);
+    }
     public void DiscardCard(CardCash cardCash)
     {
         HideActiveCard(cardCash.Card);
